@@ -1,5 +1,11 @@
 #
 
+This repo demonstrates some difference with `pip-tools` and `uv` with respect to `pytest` and docstrings containing _invalid escape strings_. Here we run 4 tests:
+
+- (`pip-tools` or `uv`) and (no `filterwarnings` or with `filterwarnings`)
+
+In the last case, `uv` with `filterwarnings`, we trigger a `SyntaxError` upon reading the module docstring in https://github.com/Zulko/moviepy/blob/v1.0.3/moviepy/config_defaults.py with contains the text `IMAGEMAGICK_BINARY = r"C:\Program Files\ImageMagick-6.8.8-Q16\magick.exe"`. Needlesstosay, this blocks testing.
+
 ## Test 1: `pip-tools`
 
 ```bash
