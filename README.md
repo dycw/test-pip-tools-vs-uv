@@ -14,8 +14,8 @@ Here we run 4 tests:
 
 In the last case, `uv` with `filterwarnings`, we trigger a `SyntaxError` upon
 reading the module docstring in
-https://github.com/Zulko/moviepy/blob/v1.0.3/moviepy/config_defaults.py with
-contains the text
+[https://github.com/Zulko/moviepy/blob/v1.0.3/moviepy/config_defaults.py](https://github.com/Zulko/moviepy/blob/v1.0.3/moviepy/config_defaults.py#L47) 
+with the text
 `IMAGEMAGICK_BINARY = r"C:\Program Files\ImageMagick-6.8.8-Q16\magick.exe"`.
 Needlesstosay, this blocks testing.
 
