@@ -29,6 +29,7 @@ pluggy==1.4.0
     # via pytest
 proglog==0.1.10
     # via moviepy
+pyclean==2.7.6
 pytest==8.0.1
 requests==2.31.0
     # via moviepy
