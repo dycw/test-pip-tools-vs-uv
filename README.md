@@ -22,13 +22,7 @@ Needlesstosay, this blocks testing.
 ## Test 1: `pip-tools`
 
 ```bash
-cd 1-pip-tools/
-uv venv
-source .venv/bin/activate
-pip install pip-tools
-pip-sync
-pytest
-cd ..
+cd 1-pip-tools/ && source ../run-pip-tools.sh
 ```
 
 ```console
@@ -52,13 +46,7 @@ test_main.py::test_main
 ## Test 2: `pip-tools` with `filterwarnings`
 
 ```bash
-cd 2-pip-tools-with-filterwarnings/
-uv venv
-source .venv/bin/activate
-pip install pip-tools
-pip-sync
-pytest
-cd ..
+cd 2-pip-tools-with-filterwarnings/ && source ../run-pip-tools.sh
 ```
 
 ```console
@@ -77,12 +65,7 @@ test_main.py .                                                                  
 ## Test 3: `uv`
 
 ```bash
-cd 3-uv/
-uv venv
-source .venv/bin/activate
-uv pip sync requirements.txt
-pytest
-cd ..
+cd 3-uv/ && source ../run-uv.sh
 ```
 
 ```console
@@ -106,12 +89,7 @@ test_main.py::test_main
 ## Test 4: `uv` with `filterwarnings`
 
 ```bash
-cd 4-uv-with-filterwarnings/
-uv venv
-source .venv/bin/activate
-uv pip sync requirements.txt
-pytest
-cd ..
+cd 4-uv-with-filterwarnings/ && source ../run-uv.sh
 ```
 
 ```console
