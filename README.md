@@ -1,6 +1,8 @@
-# Edit
+# Edit 1
 
 Now I cannot reproduce the bug in case 4. This is Heisenberg-like.
+
+For more details, see below please.
 
 # Original
 
@@ -157,3 +159,52 @@ E   SyntaxError: invalid escape sequence '\P'
 FAILED test_main.py::test_main -   File "/Users/derek/work/test-pip-tools-vs-uv/4-uv-with-filterwarnings/.venv/lib/pyth...
 ==================================== 1 failed in 0.28s ====================================
 ```
+
+
+# Edit 1
+
+For what it's worth, I am still running to this in my main project as I switch from `pip-tools` to `uv`; this is what motivated scooping this out in the first place. Here's my traceback:
+
+```console
+└ ❯ pytest src/tests/test_videoify.py
+=================================== test session starts ===================================
+platform darwin -- Python 3.10.13, pytest-8.0.0, pluggy-1.4.0
+Using --randomly-seed=1994042180
+rootdir: /Users/derek/work/lang-app
+configfile: pyproject.toml
+plugins: instafail-0.5.0, hypothesis-6.98.6, randomly-3.15.0, only-2.0.0, xdist-3.5.0, anyio-4.2.0
+collected 0 items / 1 error
+
+========================================= ERRORS ==========================================
+_______________________ ERROR collecting src/tests/test_videoify.py _______________________
+.venv/lib/python3.10/site-packages/_pytest/python.py:537: in importtestmodule
+    mod = import_path(path, mode=importmode, root=config.rootpath)
+.venv/lib/python3.10/site-packages/_pytest/pathlib.py:567: in import_path
+    importlib.import_module(module_name)
+../../.pyenv/versions/3.10.13/lib/python3.10/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+<frozen importlib._bootstrap>:1050: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1027: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1006: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:688: in _load_unlocked
+    ???
+.venv/lib/python3.10/site-packages/_pytest/assertion/rewrite.py:175: in exec_module
+    exec(co, module.__dict__)
+src/tests/test_videoify.py:8: in <module>
+    from lang_app.videoify.core import _videoify_files
+src/lang_app/videoify/core.py:11: in <module>
+    from moviepy.editor import AudioFileClip, ColorClip, CompositeVideoClip, ImageClip
+.venv/lib/python3.10/site-packages/moviepy/editor.py:60: in <module>
+    from .video.io.sliders import sliders
+E     File "/Users/derek/work/lang-app/.venv/lib/python3.10/site-packages/moviepy/video/io/sliders.py", line 61
+E       if event.key is 'enter':
+E          ^^^^^^^^^^^^^^^^^^^^
+E   SyntaxError: "is" with a literal. Did you mean "=="?
+!!!!!!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!!!!!!!
+==================================== 1 error in 4.67s =====================================
+```
+
+This seems completely strange.
