@@ -7,8 +7,8 @@ For more details, see below please.
 # Original
 
 This repo demonstrates some difference with `pip-tools` and `uv` with respect to
-`pytest` and docstrings containing _invalid escape strings_. Here we run 4
-tests:
+`pytest`, `SyntaxWarning`s and/or docstrings containing _invalid escape strings_. 
+Here we run 4 tests:
 
 - (`pip-tools` or `uv`) and (no `filterwarnings` or with `filterwarnings`)
 
