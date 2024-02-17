@@ -4,13 +4,8 @@ certifi==2024.2.2
     # via requests
 charset-normalizer==3.3.2
     # via requests
-clarabel==0.6.0
-    # via cvxpy
-cvxpy==1.4.2
 decorator==4.4.2
     # via moviepy
-ecos==2.0.13
-    # via cvxpy
 exceptiongroup==1.2.0
     # via pytest
 idna==3.6
@@ -24,17 +19,8 @@ iniconfig==2.0.0
 moviepy==1.0.3
 numpy==1.26.4
     # via
-    #   clarabel
-    #   cvxpy
-    #   ecos
     #   imageio
     #   moviepy
-    #   osqp
-    #   qdldl
-    #   scipy
-    #   scs
-osqp==0.6.5
-    # via cvxpy
 packaging==23.2
     # via pytest
 pillow==10.2.0
@@ -43,23 +29,10 @@ pluggy==1.4.0
     # via pytest
 proglog==0.1.10
     # via moviepy
-pybind11==2.11.1
-    # via cvxpy
+pyclean==2.7.6
 pytest==8.0.1
-qdldl==0.1.7.post0
-    # via osqp
 requests==2.31.0
     # via moviepy
-scipy==1.11.4
-    # via
-    #   clarabel
-    #   cvxpy
-    #   ecos
-    #   osqp
-    #   qdldl
-    #   scs
-scs==3.2.4.post1
-    # via cvxpy
 setuptools==69.1.0
     # via imageio-ffmpeg
 tomli==2.0.1

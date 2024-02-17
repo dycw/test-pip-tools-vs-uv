@@ -7,14 +7,14 @@ For more details, see below please.
 # Original
 
 This repo demonstrates some difference with `pip-tools` and `uv` with respect to
-`pytest`, `SyntaxWarning`s and/or docstrings containing _invalid escape strings_. 
-Here we run 4 tests:
+`pytest`, `SyntaxWarning`s and/or docstrings containing _invalid escape
+strings_. Here we run 4 tests:
 
 - (`pip-tools` or `uv`) and (no `filterwarnings` or with `filterwarnings`)
 
 In the last case, `uv` with `filterwarnings`, we trigger a `SyntaxError` upon
 reading the module docstring in
-[https://github.com/Zulko/moviepy/blob/v1.0.3/moviepy/config_defaults.py](https://github.com/Zulko/moviepy/blob/v1.0.3/moviepy/config_defaults.py#L47) 
+[https://github.com/Zulko/moviepy/blob/v1.0.3/moviepy/config_defaults.py](https://github.com/Zulko/moviepy/blob/v1.0.3/moviepy/config_defaults.py#L47)
 with the text
 `IMAGEMAGICK_BINARY = r"C:\Program Files\ImageMagick-6.8.8-Q16\magick.exe"`.
 Needlesstosay, this blocks testing.
@@ -22,7 +22,7 @@ Needlesstosay, this blocks testing.
 ## Test 1: `pip-tools`
 
 ```bash
-cd 1-pip-tools/ && source ../run-pip-tools.sh
+cd 1-pip-tools/ && source ../run-pip-tools.sh && cd ..
 ```
 
 ```console
@@ -46,7 +46,7 @@ test_main.py::test_main
 ## Test 2: `pip-tools` with `filterwarnings`
 
 ```bash
-cd 2-pip-tools-with-filterwarnings/ && source ../run-pip-tools.sh
+cd 2-pip-tools-with-filterwarnings/ && source ../run-pip-tools.sh && cd ..
 ```
 
 ```console
@@ -65,7 +65,7 @@ test_main.py .                                                                  
 ## Test 3: `uv`
 
 ```bash
-cd 3-uv/ && source ../run-uv.sh
+cd 3-uv/ && source ../run-uv.sh && cd ..
 ```
 
 ```console
@@ -89,7 +89,7 @@ test_main.py::test_main
 ## Test 4: `uv` with `filterwarnings`
 
 ```bash
-cd 4-uv-with-filterwarnings/ && source ../run-uv.sh
+cd 4-uv-with-filterwarnings/ && source ../run-uv.sh && cd ..
 ```
 
 ```console
@@ -138,10 +138,11 @@ FAILED test_main.py::test_main -   File "/Users/derek/work/test-pip-tools-vs-uv/
 ==================================== 1 failed in 0.28s ====================================
 ```
 
-
 # Edit 1
 
-For what it's worth, I am still running to this in my main project as I switch from `pip-tools` to `uv`; this is what motivated scooping this out in the first place. Here's my traceback:
+For what it's worth, I am still running to this in my main project as I switch
+from `pip-tools` to `uv`; this is what motivated scooping this out in the first
+place. Here's my traceback:
 
 ```console
 └ ❯ pytest src/tests/test_videoify.py
@@ -185,4 +186,5 @@ E   SyntaxError: "is" with a literal. Did you mean "=="?
 ==================================== 1 error in 4.67s =====================================
 ```
 
-I understand these used to be `SyntaxWarning`s, but, how come everything is being flagged now?
+I understand these used to be `SyntaxWarning`s, but, how come everything is
+being flagged now?
