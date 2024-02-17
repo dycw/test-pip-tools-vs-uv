@@ -170,7 +170,7 @@ For what it's worth, I am still running to this in my main project as I switch f
 =================================== test session starts ===================================
 platform darwin -- Python 3.10.13, pytest-8.0.0, pluggy-1.4.0
 Using --randomly-seed=1994042180
-rootdir: /Users/derek/work/lang-app
+rootdir: /Users/derek/work/myproject
 configfile: pyproject.toml
 plugins: instafail-0.5.0, hypothesis-6.98.6, randomly-3.15.0, only-2.0.0, xdist-3.5.0, anyio-4.2.0
 collected 0 items / 1 error
@@ -194,12 +194,12 @@ _______________________ ERROR collecting src/tests/test_videoify.py ____________
 .venv/lib/python3.10/site-packages/_pytest/assertion/rewrite.py:175: in exec_module
     exec(co, module.__dict__)
 src/tests/test_videoify.py:8: in <module>
-    from lang_app.videoify.core import _videoify_files
-src/lang_app/videoify/core.py:11: in <module>
+    from my_project.videoify.core import _videoify_files
+src/my_project/videoify/core.py:11: in <module>
     from moviepy.editor import AudioFileClip, ColorClip, CompositeVideoClip, ImageClip
 .venv/lib/python3.10/site-packages/moviepy/editor.py:60: in <module>
     from .video.io.sliders import sliders
-E     File "/Users/derek/work/lang-app/.venv/lib/python3.10/site-packages/moviepy/video/io/sliders.py", line 61
+E     File "/Users/derek/work/my_project/.venv/lib/python3.10/site-packages/moviepy/video/io/sliders.py", line 61
 E       if event.key is 'enter':
 E          ^^^^^^^^^^^^^^^^^^^^
 E   SyntaxError: "is" with a literal. Did you mean "=="?
@@ -207,4 +207,4 @@ E   SyntaxError: "is" with a literal. Did you mean "=="?
 ==================================== 1 error in 4.67s =====================================
 ```
 
-This seems completely strange.
+I understand these used to be `SyntaxWarning`s, but, how come everything is being flagged now?
