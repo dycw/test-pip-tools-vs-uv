@@ -2,7 +2,7 @@
 
 rm -rf .direnv # in case you use direnv
 rm -rf .venv   # in case you use direnv
-uv venv --python=3.11
+uv venv --python=3.10
 source .venv/bin/activate
 echo "---------"
 which python
@@ -11,6 +11,6 @@ echo "---------"
 pip install pip-tools
 pip-compile
 pip-sync
-pytest ../test_main.py
+pytest
 deactivate
 cd ..
