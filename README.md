@@ -1,10 +1,21 @@
-#
+# Edit
 
-This repo demonstrates some difference with `pip-tools` and `uv` with respect to `pytest` and docstrings containing _invalid escape strings_. Here we run 4 tests:
+Now I cannot reproduce the bug in case 4. This is Heisenberg-like.
+
+# Original
+
+This repo demonstrates some difference with `pip-tools` and `uv` with respect to
+`pytest` and docstrings containing _invalid escape strings_. Here we run 4
+tests:
 
 - (`pip-tools` or `uv`) and (no `filterwarnings` or with `filterwarnings`)
 
-In the last case, `uv` with `filterwarnings`, we trigger a `SyntaxError` upon reading the module docstring in https://github.com/Zulko/moviepy/blob/v1.0.3/moviepy/config_defaults.py with contains the text `IMAGEMAGICK_BINARY = r"C:\Program Files\ImageMagick-6.8.8-Q16\magick.exe"`. Needlesstosay, this blocks testing.
+In the last case, `uv` with `filterwarnings`, we trigger a `SyntaxError` upon
+reading the module docstring in
+https://github.com/Zulko/moviepy/blob/v1.0.3/moviepy/config_defaults.py with
+contains the text
+`IMAGEMAGICK_BINARY = r"C:\Program Files\ImageMagick-6.8.8-Q16\magick.exe"`.
+Needlesstosay, this blocks testing.
 
 ## Test 1: `pip-tools`
 
@@ -76,13 +87,18 @@ cd ..
 └ ❯ pytest
 =================================== test session starts ===================================
 platform darwin -- Python 3.10.13, pytest-8.0.1, pluggy-1.4.0
-rootdir: /Users/derek/work/test-pip-tools-vs-uv/2-pip-tools-with-filterwarnings
-configfile: pytest.ini
+rootdir: /Users/derek/work/test-pip-tools-vs-uv/3-uv
 collected 1 item
 
 test_main.py .                                                                      [100%]
 
-==================================== 1 passed in 0.24s ====================================
+==================================== warnings summary =====================================
+test_main.py::test_main
+  /Users/derek/.pyenv/versions/3.10.13/lib/python3.10/site-packages/imageio_ffmpeg/_utils.py:7: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+    from pkg_resources import resource_filename
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+============================== 1 passed, 1 warning in 0.21s ===============================
 ```
 
 ## Test 4: `uv` with `filterwarnings`
